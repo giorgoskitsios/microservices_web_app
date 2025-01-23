@@ -1,0 +1,538 @@
+{
+	"info": {
+		"_postman_id": "31f04582-b745-4bfc-bf31-fb5894f648a1",
+		"name": "saas2024-23",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28886583"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "/google",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"token\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI4YTQyMWNhZmJlM2RkODg5MjcxZGY5MDBmNGJiZjE2ZGI1YzI0ZDQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMTA3MzYzOTgxMjAzNy1wcmhuaXBmYWM5a3U4MzFydWoxaHVmdDh0cXFtZG82ci5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsImF1ZCI6IjEwNzM2Mzk4MTIwMzctcHJobmlwZmFjOWt1ODMxcnVqMWh1ZnQ4dHFxbWRvNnIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMDU2NTk4OTE1NDIyMzQ0NzIwNjkiLCJlbWFpbCI6InRoZW1pc2thcmdAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF0X2hhc2giOiIxSjlWQ0thVnNlZEpEMjc2Rm1EUG5nIiwiaWF0IjoxNzI3ODk3MTM3LCJleHAiOjE3Mjc5MDA3Mzd9.fTFnShYXa93sxxPljBLBJf4spIleNfeIPw2PokFHum-3ZicbghNX4UFuDzgugPiXuIYRFUUoa55qBOvzFqP3XT-Xs9qLVxAX2jkHnyzcIHEAxYf3QPb8lRKSWUQzYBhCYPGjmmHHvpxb7fdKSKPHy9jN3OaNbnx7pq9aj0444FgIsyzDAvGXHoFNC7zIfSc785dUPewk2NZIVbLtZ0azRR3U6xxAkCddYvMY6WKSOxDfIkehwRvbO5TIPf1gY7rVvmG-2sBuBai0w7O7pXde9Gc-kUbMwWpE8YzXMtqvgdny6bxHfgzlxA94JSD06ANiCB01KZSKbJbbCjAPGO8gKA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/auth/google",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"auth",
+								"google"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "problems-open",
+			"item": [
+				{
+					"name": "view",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5005/api/problems",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5005",
+							"path": [
+								"api",
+								"problems"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "problem-submit",
+			"item": [
+				{
+					"name": "upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/efthy/Documents/project/saas2024-23/data/1000.json"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "datasets",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/datasets",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"datasets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "problem",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fileId\": \"66f7f987c78aacb8d4b54b71\",\r\n    \"depot\": 0,\r\n    \"max_distance\": 100000,\r\n    \"num_vehicles\": 4 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/problem",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"problem"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "credits",
+			"item": [
+				{
+					"name": "show",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5006/api/balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5006",
+							"path": [
+								"api",
+								"balance"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "modify",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5006/api/balance",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5006",
+							"path": [
+								"api",
+								"balance"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "problems-completed",
+			"item": [
+				{
+					"name": "statistics",
+					"item": [
+						{
+							"name": "user",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5007/api/statistics/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5007",
+									"path": [
+										"api",
+										"statistics",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "system",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5007/api/statistics/system",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5007",
+									"path": [
+										"api",
+										"statistics",
+										"system"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "submit",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{jwt_token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5007/api/statistics/problem/{{submitId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5007",
+									"path": [
+										"api",
+										"statistics",
+										"problem",
+										"{{submitId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "view",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{jwt_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5007/api/completed",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5007",
+							"path": [
+								"api",
+								"completed"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "oauth2",
+		"oauth2": [
+			{
+				"key": "scope",
+				"value": "https://www.googleapis.com/auth/userinfo.profile email",
+				"type": "string"
+			},
+			{
+				"key": "state",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "authUrl",
+				"value": "{{auth_url}}",
+				"type": "string"
+			},
+			{
+				"key": "accessTokenUrl",
+				"value": "{{access_token_url}}",
+				"type": "string"
+			},
+			{
+				"key": "useBrowser",
+				"value": true,
+				"type": "boolean"
+			},
+			{
+				"key": "redirect_uri",
+				"value": "https://oauth.pstmn.io/v1/callback",
+				"type": "string"
+			},
+			{
+				"key": "tokenName",
+				"value": "",
+				"type": "string"
+			},
+			{
+				"key": "clientId",
+				"value": "{{client_id}}",
+				"type": "string"
+			},
+			{
+				"key": "clientSecret",
+				"value": "{{client_secret}}",
+				"type": "string"
+			},
+			{
+				"key": "grant_type",
+				"value": "authorization_code",
+				"type": "string"
+			},
+			{
+				"key": "addTokenTo",
+				"value": "header",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "client_id",
+			"value": "1073639812037-prhnipfac9ku831ruj1huft8tqqmdo6r.apps.googleusercontent.com",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "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",
+			"type": "string"
+		},
+		{
+			"key": "auth_url",
+			"value": "https://accounts.google.com/o/oauth2/v2/auth",
+			"type": "string"
+		},
+		{
+			"key": "access_token_url",
+			"value": "https://accounts.google.com/o/oauth2/token",
+			"type": "string"
+		},
+		{
+			"key": "scope_email",
+			"value": "https://www.googleapis.com/auth/userinfo.email",
+			"type": "string"
+		},
+		{
+			"key": "scope_profile",
+			"value": "https://www.googleapis.com/auth/userinfo.profile",
+			"type": "string"
+		},
+		{
+			"key": "jwt_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmY3Zjg3ZTIxODNhOTIzODg2ZTMyYzciLCJlbWFpbCI6InRoZW1pc2thcmdAZ21haWwuY29tIiwiaWF0IjoxNzI3ODk3MTc3LCJleHAiOjE3Mjc5MDA3Nzd9.2zbCIxJjYGI2zxR0M5qlfMZuvbqDpOesruBCsGRDRes",
+			"type": "string"
+		},
+		{
+			"key": "submitId",
+			"value": "bf289bb8-ab9f-479e-8919-e520644dd45b",
+			"type": "string"
+		}
+	]
+}

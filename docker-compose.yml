@@ -1,0 +1,107 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+    healthcheck:
+      test: rabbitmq-diagnostics check_port_listener 5672
+      interval: 10s
+      timeout: 3s
+      retries: 7
+      start_period: 40s
+
+  auth:
+    build:
+      context: ./auth
+      dockerfile: Dockerfile
+    container_name: auth
+    ports:
+      - '5000:5000'
+    env_file:
+      - ./auth/.env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  credits:
+    build:
+      context: ./credits
+      dockerfile: Dockerfile
+    container_name: credits
+    ports:
+      - '5006:5006'
+    env_file:
+      - ./credits/.env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: ./Front-end
+      dockerfile: Dockerfile
+    container_name: Front-end
+    ports:
+      - '80:80'
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  problems-completed:
+    build:
+      context: ./problems-completed
+      dockerfile: Dockerfile
+    container_name: problems-completed
+    ports:
+      - '5007:5007'
+    env_file:
+      - ./problems-completed/.env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  problems-open:
+    build:
+      context: ./problems-open
+      dockerfile: Dockerfile
+    container_name: problems-open
+    ports:
+      - '5005:5005'
+    env_file:
+      - ./problems-open/.env
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  problems-submit:
+    build:
+      context: ./problems-submit
+      dockerfile: Dockerfile
+    container_name: problems-submit
+    ports:
+      - '5001:5001'
+    env_file:
+      - ./problems-submit/.env
+    volumes:
+      - ./problems-submit/uploads:/app/uploads
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+  solver:
+    build:
+      context: ./solver
+      dockerfile: Dockerfile
+    container_name: solver
+    ports:
+      - '5003:5003'
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+
+volumes:
+  rabbitmq_data:
